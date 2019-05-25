@@ -96,7 +96,7 @@ extern void zen_add_function(lua_State *L, lua_CFunction func,
 
 // single instance globals
 zenroom_t *Z = NULL;   // zenroom STACK
-zen_mem_t *mem = NULL; // zenroom HEAP
+zen_mem_t *MEM = NULL; // zenroom HEAP
 
 static int zen_lua_panic (lua_State *L) {
 	lua_writestringerror("PANIC: unprotected error in call to Lua API (%s)\n",
@@ -108,7 +108,7 @@ static int zen_init_pmain(lua_State *L) { // protected mode init
 	// create the zenroom_t global context
 	Z = system_alloc(sizeof(zenroom_t));
 	Z->lua = L;
-	Z->mem = mem;
+	Z->mem = MEM;
 	Z->stdout_buf = NULL;
 	Z->stdout_pos = 0;
 	Z->stdout_len = 0;
@@ -151,15 +151,15 @@ zenroom_t *zen_init(const char *conf, char *keys, char *data) {
 	lua_State *L = NULL;
 	if(conf) {
 		if(strcasecmp(conf,"umm")==0)
-			mem = umm_memory_init(UMM_HEAP); // (64KiB)
+			MEM = umm_memory_init(UMM_HEAP); // (64KiB)
 	} else {
 #ifdef USE_JEMALLOC
-		mem = jemalloc_memory_init();
+		MEM = jemalloc_memory_init();
 #else
-		mem = libc_memory_init();
+		MEM = libc_memory_init();
 #endif
 	}
-	L = lua_newstate(zen_memory_manager, mem);
+	L = lua_newstate(zen_memory_manager, MEM);
 	if(!L) {
 		error(L,"%s: %s", __func__, "Lua newstate creation failed");
 		return NULL;
