@@ -28,6 +28,7 @@ android-arm android-x86: apply-patches lua53 milagro embed-lua lpeglabel
 	LD="${ld}" RANLIB="${ranlib}" AR="${ar}" \
 		make -C src $@
 
+cortex-arm: ldflags += -Wl,-Map=./zenroom.map
 cortex-arm:	apply-patches cortex-lua53 milagro embed-lua lpeglabel
 	CC=${gcc} AR="${ar}" OBJCOPY="${objcopy}" CFLAGS="${cflags}" LDFLAGS="${ldflags}" LDADD="${ldadd}" \
 	make -C src cortex-arm
