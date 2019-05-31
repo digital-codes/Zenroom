@@ -50,6 +50,9 @@ js-demo: ${SOURCES}
 musl: ${SOURCES}
 	${CC} ${CFLAGS} ${SOURCES} -o zenroom-static ${LDFLAGS} ${LDADD}
 
+musl-lib: ${SOURCES}
+	libtool -static -o zenroom-ios-${TARGET}.a ${SOURCES} ${LDFLAGS} $(shell find ../lib -name \*.a) ${LDADD}
+
 linux: ${SOURCES}
 	${CC} ${CFLAGS} ${SOURCES} -o zenroom-shared ${LDFLAGS} ${LDADD}
 

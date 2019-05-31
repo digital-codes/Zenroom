@@ -4,6 +4,11 @@ musl: apply-patches lua53 embed-lua milagro
 		make -C src musl
 		@cp -v src/zenroom-static build/zenroom.x86
 
+musl-lib: ldadd += /usr/lib/${ARCH}-linux-musl/libc.a
+musl-lib: apply-patches lua53 embed-lua milagro
+	CC=${gcc} AR="${ar}" CFLAGS="${cflags}" LDFLAGS="${ldflags}" LDADD="${ldadd}" \
+	make -C src musl-lib
+
 musl-local: ldadd += /usr/local/musl/lib/libc.a
 musl-local: apply-patches lua53 embed-lua milagro
 	CC=${gcc} AR="${ar}" CFLAGS="${cflags}" LDFLAGS="${ldflags}" LDADD="${ldadd}" \
