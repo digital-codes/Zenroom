@@ -76,11 +76,13 @@ end
 -- generates problems leading to the pairs for loop in function above.
 _G["pairs"]  = _pairs
 _G["ipairs"] = _pairs
+<<<<<<< HEAD
 
 ------------------------------
 -- FUNCTIONAL LANGUAGE HELPERS
 ----------------------------------------
-
+=======
+>>>>>>> 68fa56e339b4773ba5091ccf45cc82b349efbacc
 -- stateless map mostly for internal use
 function _map(t, f, ...)
    -- safety
@@ -108,6 +110,8 @@ function map(data, fun)
    return(out)
 end
 
+<<<<<<< HEAD
+
 -- returns a flat associative table of all objects in 'const'
 function flatten(const)
    local flat = { }
@@ -125,6 +129,9 @@ function flatten(const)
    return flat
 end
 
+
+=======
+>>>>>>> 68fa56e339b4773ba5091ccf45cc82b349efbacc
 function help(module)
    if module == nil then
 	  print("usage: help(module)")
