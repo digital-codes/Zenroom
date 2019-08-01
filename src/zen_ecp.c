@@ -368,7 +368,7 @@ static int ecp_eq(lua_State *L) {
 
 // use shared internally with octet o_arg()
 int _ecp_to_octet(octet *o, ecp *e) {
-	ECP_toOctet(o, &e->val);
+	ECP_toOctet(o, &e->val,false);
 	return(1);
 }
 /***
