@@ -254,7 +254,7 @@ var ZR = (function() {
     const execute_zenroom = function(code) {
         const keys = ace.edit("keys").getValue() || null
         const data = ace.edit("data").getValue() || null
-        const conf = $('#umm').attr('checked') ? 'umm' : null
+        const conf = "color=0"
         outputBuffer = []
         clearOutput()
         let t0 = performance.now()
