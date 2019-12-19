@@ -23,7 +23,7 @@
 #include <zen_error.h>
 
 #include <ecdh_ED25519.h>
-#include <ecdh_BLS383.h>
+#include <ecdh_BLS12383.h>
 #include <ecdh_GOLDILOCKS.h>
 #include <ecdh_SECP256K1.h>
 
@@ -53,19 +53,19 @@ ecdh *ecdh_new_curve(lua_State *L, const char *cname) {
 		e->ECP__SP_DSA = ECP_ED25519_SP_DSA;
 		e->ECP__VP_DSA = ECP_ED25519_VP_DSA;
 
-	} else if(strcasecmp(curve,"bls383")==0) {
+	} else if(strcasecmp(curve,"BLS12383")==0) {
 			e = (ecdh*)lua_newuserdata(L, sizeof(ecdh));
-			e->seclen = EGS_BLS383;
-			e->fieldsize = EFS_BLS383;
+			e->seclen = EGS_BLS12383;
+			e->fieldsize = EFS_BLS12383;
 			e->rng = NULL;
-			e->hash = HASH_TYPE_BLS383;
-			e->ECP__KEY_PAIR_GENERATE = ECP_BLS383_KEY_PAIR_GENERATE;
-			e->ECP__PUBLIC_KEY_VALIDATE	= ECP_BLS383_PUBLIC_KEY_VALIDATE;
-			e->ECP__SVDP_DH = ECP_BLS383_SVDP_DH;
-			e->ECP__ECIES_ENCRYPT = ECP_BLS383_ECIES_ENCRYPT;
-			e->ECP__ECIES_DECRYPT = ECP_BLS383_ECIES_DECRYPT;
-			e->ECP__SP_DSA = ECP_BLS383_SP_DSA;
-			e->ECP__VP_DSA = ECP_BLS383_VP_DSA;
+			e->hash = HASH_TYPE_BLS12383;
+			e->ECP__KEY_PAIR_GENERATE = ECP_BLS12383_KEY_PAIR_GENERATE;
+			e->ECP__PUBLIC_KEY_VALIDATE	= ECP_BLS12383_PUBLIC_KEY_VALIDATE;
+			e->ECP__SVDP_DH = ECP_BLS12383_SVDP_DH;
+			e->ECP__ECIES_ENCRYPT = ECP_BLS12383_ECIES_ENCRYPT;
+			e->ECP__ECIES_DECRYPT = ECP_BLS12383_ECIES_DECRYPT;
+			e->ECP__SP_DSA = ECP_BLS12383_SP_DSA;
+			e->ECP__VP_DSA = ECP_BLS12383_VP_DSA;
 
 	} else if(strcasecmp(curve,"goldilocks")==0) {
 		e = (ecdh*)lua_newuserdata(L, sizeof(ecdh));

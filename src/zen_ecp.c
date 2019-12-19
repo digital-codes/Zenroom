@@ -18,7 +18,7 @@
  *
  */
 
-// For now, the only supported curve is BLS383 type WEIERSTRASS
+// For now, the only supported curve is BLS12383 type WEIERSTRASS
 
 
 /// <h1>Elliptic Curve Point Arithmetic (ECP)</h1>
@@ -48,7 +48,7 @@
 #include <lauxlib.h>
 
 #include <zen_ecp.h>
-#include <zen_ecp_bls383.h>
+#include <zen_ecp_BLS12383.h>
 
 #include <jutils.h>
 #include <zen_error.h>
@@ -63,7 +63,7 @@ ecp* ecp_new(lua_State *L) {
 	if(!e) {
 		lerror(L, "Error allocating new ecp in %s",__func__);
 		return NULL; }
-	strcpy(e->curve,"bls383");
+	strcpy(e->curve,"BLS12383");
 	strcpy(e->type,"weierstrass");
 	e->biglen = sizeof(BIG);
 	e->totlen = (MODBYTES*2)+1; // length of ECP.new(rng:modbig(o),0):octet()
@@ -130,8 +130,8 @@ static int lua_new_ecp(lua_State *L) {
 #endif
 
 	// We protect well this entrypoint since parsing any input is at risk
-	// Milagro's _fromOctet() uses ECP_BLS383_set(ECP_BLS383 *P,BIG_384_29 x)
-	// then converts the BIG to an FP modulo using FP_BLS383_nres.
+	// Milagro's _fromOctet() uses ECP_BLS12383_set(ECP_BLS12383 *P,BIG_384_29 x)
+	// then converts the BIG to an FP modulo using FP_BLS12383_nres.
 	octet *o = o_arg(L,1); SAFE(o);
 	ecp *e = ecp_new(L); SAFE(e);
 	if(o->len == 2 && o->val[0] == SCHAR_MAX && o->val[1] == SCHAR_MAX) {
@@ -364,7 +364,7 @@ int _ecp_to_octet(octet *o, ecp *e) {
 		o->val[0] = SCHAR_MAX; o->val[1] = SCHAR_MAX;
 		o->val[3] = 0x0; o->len = 2;
 	} else
-		ECP_toOctet(o, &e->val);
+		ECP_toOctet(o, &e->val,0);
 	return(1);
 }
 /***

@@ -28,13 +28,13 @@
 #include <zen_error.h>
 #include <lua_functions.h>
 
-#include <amcl.h>
+#include <core.h>
 
 #include <zenroom.h>
 #include <zen_octet.h>
 #include <zen_memory.h>
 #include <zen_big.h>
-#include <zen_ecp_bls383.h> // TODO: abstract to support multiple curves
+#include <zen_ecp_BLS12383.h> // TODO: abstract to support multiple curves
 
 /// <h1>Big Number Arithmetic (BIG)</h1>
 //

@@ -45,9 +45,9 @@
 
 #include <time.h>
 
-#include <amcl.h>
+#include <core.h>
 
-// easier name (csprng comes from amcl.h in milagro)
+// easier name (csprng comes from core.h in milagro)
 #define RNG csprng
 
 #include <zenroom.h>

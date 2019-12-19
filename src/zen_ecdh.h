@@ -21,8 +21,9 @@
 #ifndef __ZEN_ECDH_H__
 #define __ZEN_ECDH_H__
 
+#include <core.h>
 #include <zen_octet.h>
-#include <pbc_support.h>
+// #include <pbc_support.h>
 
 typedef struct {
 	// function pointers

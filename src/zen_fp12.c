@@ -26,7 +26,7 @@
 #include <zen_error.h>
 #include <lua_functions.h>
 
-#include <amcl.h>
+#include <core.h>
 
 #include <zenroom.h>
 #include <zen_octet.h>
@@ -41,7 +41,7 @@ fp12* fp12_new(lua_State *L) {
 		return NULL; }
 	luaL_getmetatable(L, "zenroom.fp12");
 	lua_setmetatable(L, -2);
-	strcpy(c->name,"BLS383");
+	strcpy(c->name,"BLS12383");
 	c->len = sizeof(FP12);
 	c->chunk = CHUNK;
 	func(L, "new fp12 (%u bytes)",c->len);

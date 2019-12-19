@@ -22,7 +22,7 @@
 #define __ZEN_HASH_H__
 
 #include <lua.h>
-#include <amcl.h>
+#include <core.h>
 
 #define _SHA256 2
 #define _SHA384 3

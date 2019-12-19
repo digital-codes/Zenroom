@@ -18,7 +18,7 @@
  *
  */
 
-// For now, the only supported curve is BLS383 type WEIERSTRASS
+// For now, the only supported curve is BLS12383 type WEIERSTRASS
 
 
 /// <h1>Twisted Elliptic Curve Point Arithmetic (ECP2)</h1>
@@ -49,7 +49,7 @@
 #include <lualib.h>
 #include <lauxlib.h>
 
-#include <zen_ecp_bls383.h>
+#include <zen_ecp_BLS12383.h>
 
 #include <jutils.h>
 #include <zen_error.h>
@@ -63,7 +63,7 @@
 
 // use shared internally with octet o_arg()
 int _ecp2_to_octet(octet *o, ecp2 *e) {
-	ECP2_toOctet(o, &e->val);
+	ECP2_toOctet(o, &e->val,0);
 	return(1);
 }
 
@@ -73,7 +73,7 @@ ecp2* ecp2_new(lua_State *L) {
 	if(!e) {
 		lerror(L, "Error allocating new ecp2 in %s",__func__);
 		return NULL; }
-	strcpy(e->curve,"bls383");
+	strcpy(e->curve,"BLS12383");
 	strcpy(e->type,"weierstrass");
 	e->totlen = (MODBYTES*4)+1;
 	BIG_copy(e->order, (chunk*)CURVE_Order);
@@ -306,7 +306,7 @@ static int ecp2_octet(lua_State *L) {
 	ecp2 *e = ecp2_arg(L,1); SAFE(e);
 	octet *o = o_new(L,(MODBYTES<<2)+1);
 	SAFE(o);
-	ECP2_toOctet(o, &e->val);
+	ECP2_toOctet(o, &e->val,0);
 	return 1;
 }
 

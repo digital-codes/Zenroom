@@ -22,14 +22,14 @@
 #define __ZEN_BIG_TYPES_H__
 #include <arch.h>
 
-#include <fp12_BLS383.h>
+#include <fp12_BLS12383.h>
 // cascades includes for big_ fp_ fp2_ and fp4_
 
 // instance is in rom_field_XXX.c and included by fp_XXX.h
-#define Modulus Modulus_BLS383
-#define CURVE_Gx CURVE_Gx_BLS383
-#define CURVE_Gy CURVE_Gy_BLS383
-#define Montgomery MConst_BLS383 // 0x73435FD from rom_field_BLS383 at 32bit
+#define Modulus Modulus_BLS12383
+#define CURVE_Gx CURVE_Gx_BLS12383
+#define CURVE_Gy CURVE_Gy_BLS12383
+#define Montgomery MConst_BLS12383 // 0x73435FD from rom_field_BLS12383 at 32bit
 #if BIGSIZE == 384
 #if CHUNK == 64
 // TODO: 64bit is here unfinished and unsupported
@@ -118,34 +118,34 @@
 #define BIG_dzero(d) BIG_384_29_dzero(d)
 #define BIG_dnbits(d) BIG_384_29_dnbits(d)
 
-#define FP FP_BLS383
-#define FP_copy(d,s) FP_BLS383_copy(d,s)
-#define FP_redc(x,y) FP_BLS383_redc(x,y)
-#define FP_reduce(x) FP_BLS383_reduce(x)
-#define FP_mod(d,s) FP_BLS383_mod(d,s)
+#define FP FP_BLS12383
+#define FP_copy(d,s) FP_BLS12383_copy(d,s)
+#define FP_redc(x,y) FP_BLS12383_redc(x,y)
+#define FP_reduce(x) FP_BLS12383_reduce(x)
+#define FP_mod(d,s) FP_BLS12383_mod(d,s)
 
-#define FP12 FP12_BLS383
-/* #define FP12_zero(b) FP12_BLS383_zero(b) */
-#define FP12_copy(d,s) FP12_BLS383_copy(d,s)
-#define FP12_eq(l,r) FP12_BLS383_equals(l,r)
-/* #define FP12_cmove(d,s,c) FP12_BLS383_cmove(d,s,c) */
-#define FP12_fromOctet(f,o) FP12_BLS383_fromOctet(f,o)
-#define FP12_toOctet(o,f) FP12_BLS383_toOctet(o,f)
-#define FP12_mul(l, r) FP12_BLS383_mul(l, r)
-/* #define FP12_imul(d, l, r) FP12_BLS383_imul(d, l, r) */
-#define FP12_sqr(d, s) FP12_BLS383_sqr(d, s)
-/* #define FP12_add(d, l, r) FP12_BLS383_add(d, l, r)
-#define FP12_sub(d, l, r) FP12_BLS383_sub(d, l, r) */
-#define FP12_div2(d, s) FP12_BLS383_div2(d,s)
-#define FP12_pow(r, x, b) FP12_BLS383_pow(r,x,b)
-// #define FP12_pinpow(r, x, b) FP12_BLS383_pinpow(r,x,b)
+#define FP12 FP12_BLS12383
+/* #define FP12_zero(b) FP12_BLS12383_zero(b) */
+#define FP12_copy(d,s) FP12_BLS12383_copy(d,s)
+#define FP12_eq(l,r) FP12_BLS12383_equals(l,r)
+/* #define FP12_cmove(d,s,c) FP12_BLS12383_cmove(d,s,c) */
+#define FP12_fromOctet(f,o) FP12_BLS12383_fromOctet(f,o)
+#define FP12_toOctet(o,f) FP12_BLS12383_toOctet(o,f)
+#define FP12_mul(l, r) FP12_BLS12383_mul(l, r)
+/* #define FP12_imul(d, l, r) FP12_BLS12383_imul(d, l, r) */
+#define FP12_sqr(d, s) FP12_BLS12383_sqr(d, s)
+/* #define FP12_add(d, l, r) FP12_BLS12383_add(d, l, r)
+#define FP12_sub(d, l, r) FP12_BLS12383_sub(d, l, r) */
+#define FP12_div2(d, s) FP12_BLS12383_div2(d,s)
+#define FP12_pow(r, x, b) FP12_BLS12383_pow(r,x,b)
+// #define FP12_pinpow(r, x, b) FP12_BLS12383_pinpow(r,x,b)
 
-// #define FP12_sqrt(d,s) FP12_BLS383_sqrt(d,s)
-// #define FP12_neg(d,s) FP12_BLS383_neg(d,s)
-// #define FP12_reduce(f) FP12_BLS383_reduce(f)
-// #define FP12_norm(f) FP12_BLS383_norm(f)
-// #define FP12_qr(f) FP12_BLS383_qr(f)
-#define FP12_inv(d,s) FP12_BLS383_inv(d,s)
+// #define FP12_sqrt(d,s) FP12_BLS12383_sqrt(d,s)
+// #define FP12_neg(d,s) FP12_BLS12383_neg(d,s)
+// #define FP12_reduce(f) FP12_BLS12383_reduce(f)
+// #define FP12_norm(f) FP12_BLS12383_norm(f)
+// #define FP12_qr(f) FP12_BLS12383_qr(f)
+#define FP12_inv(d,s) FP12_BLS12383_inv(d,s)
 
 #elif CHUNK == 16
 #error "BIGnum CHUNK size: 16bit PLATFORM NOT SUPPORTED"

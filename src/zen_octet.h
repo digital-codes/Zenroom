@@ -21,7 +21,7 @@
 #ifndef __ZEN_OCTET_H__
 #define __ZEN_OCTET_H__
 
-#include <amcl.h>
+#include <core.h>
 
 // REMEMBER: o_new and o_dup push a new object in lua's stack
 octet* o_new(lua_State *L, const int size);

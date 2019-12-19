@@ -11,7 +11,7 @@ musl-local: apply-patches lua53 embed-lua milagro
 
 musl-system: gcc := gcc
 musl-system: ldadd += -lm
-musl-system: apply-patches lua53 embed-lua milagro
+musl-system: apply-patches lua53 embed-lua
 	CC=${gcc} AR="${ar}" CFLAGS="${cflags}" LDFLAGS="${ldflags}" LDADD="${ldadd}" \
 		make -C src musl
 

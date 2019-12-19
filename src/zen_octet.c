@@ -64,7 +64,7 @@
 #include <zen_error.h>
 #include <lua_functions.h>
 
-#include <amcl.h>
+#include <core.h>
 
 #include <zenroom.h>
 #include <encoding.h>
