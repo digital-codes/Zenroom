@@ -27,6 +27,7 @@
 #include <lua_functions.h>
 
 #include <amcl.h>
+#include <pair_BLS383.h> // GTpow
 
 #include <zenroom.h>
 #include <zen_octet.h>
@@ -41,7 +42,7 @@ fp12* fp12_new(lua_State *L) {
 		return NULL; }
 	luaL_getmetatable(L, "zenroom.fp12");
 	lua_setmetatable(L, -2);
-	strcpy(c->name,"BLS383");
+	strcpy(c->name,"BLS381");
 	c->len = sizeof(FP12);
 	c->chunk = CHUNK;
 	func(L, "new fp12 (%u bytes)",c->len);
@@ -107,10 +108,10 @@ static int fp12_mul(lua_State *L) {
 }
 
 static int fp12_pow(lua_State *L) {
-	fp12 *r = fp12_new(L); SAFE(r);
 	fp12 *x = fp12_arg(L,1); SAFE(x);
 	big  *b = big_arg(L,2); SAFE(b);
-	FP12_pow(&r->val,&x->val,b->val);
+	fp12 *r = fp12_dup(L,x); SAFE(r);
+	FP12_GTpow(&r->val,b->val);
 	return 1;
 }
 

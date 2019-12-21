@@ -77,13 +77,13 @@ extern zenroom_t *Z; // accessed to check random_seed configuration
 
 /**
    Create a new ECDH encryption keyring using a specified curve
-   ('BLS383' by default).
+   ('BLS381' by default).
 
    A keyring object will be returned implementing ECDH methods.
 
-   Supported curves: 'BLS383', 'ED25519', 'GOLDILOCKS', 'SECP256K1'
+   Supported curves: 'BLS381', 'ED25519', 'GOLDILOCKS', 'SECP256K1'
 
-   @param curve[opt=BLS383] name of elliptic curve to use
+   @param curve[opt=BLS381] name of elliptic curve to use
    @return a new keyring
    @function ECDH.new(curve)
    @usage
@@ -130,7 +130,7 @@ int ecdh_destroy(lua_State *L) {
 
 
 static int lua_new_ecdh(lua_State *L) {
-	const char *curve = luaL_optstring(L, 1, "bls383");
+	const char *curve = luaL_optstring(L, 1, "bls381");
 	ecdh *e = ecdh_new(L, curve);
 	SAFE(e);
 	func(L,"new ecdh curve %s type %s", e->curve, e->type);
@@ -140,7 +140,7 @@ static int lua_new_ecdh(lua_State *L) {
 
 static int ecdh_new_keygen(lua_State *L) {
 	HERE();
-	const char *curve = luaL_optstring(L, 1, "bls383");
+	const char *curve = luaL_optstring(L, 1, "bls381");
 	ecdh *e = ecdh_new(L, curve); SAFE(e);
 	e->pubkey = o_new(L,e->publen +0x0f); SAFE(e->pubkey);
 	e->seckey = o_new(L,e->seclen +0x0f); SAFE(e->seckey);

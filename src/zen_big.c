@@ -34,7 +34,7 @@
 #include <zen_octet.h>
 #include <zen_memory.h>
 #include <zen_big.h>
-#include <zen_ecp_bls383.h> // TODO: abstract to support multiple curves
+#include <zen_ecp_bls381.h> // TODO: abstract to support multiple curves
 
 /// <h1>Big Number Arithmetic (BIG)</h1>
 //

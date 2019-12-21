@@ -4,7 +4,7 @@ print ""
 
 ECP = require'zenroom_ecp'
 
-ecdh = ECDH.new('bls383')
+ecdh = ECDH.new('bls381')
 
 g1 = ECP.generator()
 o = ECP.order()

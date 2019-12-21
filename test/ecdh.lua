@@ -51,7 +51,7 @@ end
 test_curve('ed25519')
 test_curve('ec25519')
 test_curve('25519')
-test_curve('bls383')
+test_curve('bls381')
 test_curve('goldilocks')
 test_curve('secp256k1')
 --- this all are failing
@@ -74,7 +74,7 @@ function test_simple_curve (name)
 end
 
 test_simple_curve('ed25519')
-test_simple_curve('bls383')
+test_simple_curve('bls381')
 test_simple_curve('goldilocks')
 test_simple_curve('secp256k1')
 
@@ -82,17 +82,17 @@ test_simple_curve('secp256k1')
 print ''
 print('  DSA SIGN/VERIFY')
 
-print('bls383')
+print('bls381')
 
 local skey = OCTET.random(32)
 I.print({ skey_len = #skey})
 local pkey = INT.new(skey):mod(ECP.order()) * ECP.generator()
 
-ptest = ECDH.new('bls383')
+ptest = ECDH.new('bls381')
 ptest:public(pkey:octet())
 assert(ptest:public() == pkey, "ECDH and ECP public import/export differs")
 
-ecdh = ECDH.new('bls383')
+ecdh = ECDH.new('bls381')
 ecdh:private(skey)
 I.print({ private_import = { ECP_ = skey,
 							 ECDH = ecdh:private()}})
